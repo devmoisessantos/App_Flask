@@ -1,7 +1,7 @@
-from project.templates.conn import result_filmes
+from project.conn import result_filmes
 from flask import render_template, request, redirect, url_for
-from project.templates.app import app, db
-from project.templates.models import Livro
+from project.app import app, db
+from models import Livro
 
 
 with app.app_context():
