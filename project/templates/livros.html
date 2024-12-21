@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block conteudo %}
+<hr>
+<h2 class = "text-center">Lista de Livros</h2>
+<hr>
+<a href="{{ url_for('add_livro') }}" class="btn btn-primary">Adicionar Livro</a>
+<br><br>
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for livro in livros %}
+        <tr>
+            <td>{{livro.id}}</td>
+            <td>{{livro.titulo}}</td>
+            <td>{{livro.descricao}}</td>
+            <td>{{livro.valor}}</td>
+            <td>
+                <a href="{{ url_for('update_livro', id=livro.id) }}" class="btn btn-primary btn-xs">Editar</a>
+                <a href="{{ url_for('delete_livro', id=livro.id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<nav aria-label="...">
+    <ul class="pagination">
+        {% if livros.has_prev %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('livros', page=livros.prev_num) }}">Página Anterior</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Página Anterior</span>
+            </li>
+        {% endif %}
+        {% if livros.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('livros', page=livros.next_num) }}">Próxima Página</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link">Próxima Página</span>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+<hr>
+{% endblock conteudo %}
