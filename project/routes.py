@@ -1,6 +1,6 @@
 from project.conn import result_filmes
 from flask import render_template, request, redirect, url_for
-from project.app import app, db
+from project import app, db
 from project.models import Livro
 
 

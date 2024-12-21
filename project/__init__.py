@@ -15,3 +15,6 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///livros.sqlite3'
 
 db = SQLAlchemy(app)
+
+
+from project.routes import *

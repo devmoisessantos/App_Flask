@@ -1,4 +1,4 @@
-from project.app import db
+from project import db
 
 class Livro(db.Model):
     id = db.Column(db.Integer, primary_key=True)
